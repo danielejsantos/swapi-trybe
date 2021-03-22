@@ -14,7 +14,6 @@ export default createGlobalStyle`
   }
   *, button, input {
     border: 0;
-    background: #181818;
     font-family: 'Roboto', sans-serif;
     color: #fff;
   }
