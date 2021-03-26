@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import * as S from './styles';
+import * as S from "./styles";
+import useTable from "./table.hook";
 
 const Table: React.FC = () => {
+  const { planets, formatFilms, dateFormat, numberWithSeparator } = useTable();
+
   return (
     <S.Table>
       <tr>
@@ -18,25 +21,29 @@ const Table: React.FC = () => {
         <th>Films</th>
         <th>Created</th>
         <th>Edited</th>
-        {/* <th>Url</th> */}
       </tr>
-      <tr>
-        <td>Tatooine</td>
-        <td>23</td>
-        <td>304</td>
-        <td>10.465</td>
-        <td>Arid</td>
-        <td>1 standard</td>
-        <td>Desert</td>
-        <td>1</td>
-        <td>200.000</td>
-        <td>Episode IV, Episode VI, Episode I, Episode II and Episode III</td>
-        <td>09/12/2014</td>
-        <td>20/12/2014</td>
-        {/* <td></td> */}
-      </tr>
+      {planets.map((planet: any) => {
+        if (planet.lenght === 0) return <div key={planet.name} />;
+
+        return (
+          <tr key={planet.name}>
+            <td>{planet.name}</td>
+            <td>{planet.rotation_period}</td>
+            <td>{numberWithSeparator(planet.orbital_period)}</td>
+            <td>{numberWithSeparator(planet.diameter)}</td>
+            <td>{planet.climate}</td>
+            <td>{planet.gravity}</td>
+            <td>{planet.terrain}</td>
+            <td>{planet.surface_water}</td>
+            <td>{numberWithSeparator(planet.population)}</td>
+            <td>{formatFilms(planet.films)}</td>
+            <td>{dateFormat(planet.created)}</td>
+            <td>{dateFormat(planet.edited)}</td>
+          </tr>
+        );
+      })}
     </S.Table>
   );
-}
+};
 
 export default Table;
