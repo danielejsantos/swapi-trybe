@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Header from '../../components/Header';
-import SearchBar from '../../components/SearchBar';
-import Table from './Table';
+import Header from "../../components/Header";
+import SearchBar from "../../components/SearchBar";
+import Footer from "../../components/Footer";
 
-import * as S from './styles';
+import Table from "./Table";
+import * as S from "./styles";
 
 const Home: React.FC = () => {
   return (
@@ -14,8 +15,9 @@ const Home: React.FC = () => {
         <SearchBar />
         <Table />
       </S.BodyWrapper>
+      <Footer />
     </S.Container>
   );
-}
+};
 
 export default Home;
