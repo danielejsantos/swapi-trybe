@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import { TiDeleteOutline } from 'react-icons/ti';
 
+interface SearchInputProps {
+  isSearchNumber?: boolean;
+}
+
 export const Container = styled.div`
   width: 100%;
   display: flex;
@@ -14,8 +18,8 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
-export const SearchInput = styled.input`
-  width: 300px;
+export const SearchInput = styled.input<SearchInputProps>`
+  width: ${({isSearchNumber}) => isSearchNumber ? '135px' : '300px'};
   padding: 8px;
   border: 1px solid #3B3B3B;
   background-color: #3B3B3B;
@@ -34,11 +38,11 @@ export const FilterWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 export const Select = styled.select`
-  width: 100%;
+  width: 135px;
   height: 35px;
   background: #3B3B3B;
   color: white;
